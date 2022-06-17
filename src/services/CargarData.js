@@ -6,9 +6,37 @@ export const getAlumnos = () => {
 }
 
 
-export const getNotasAlumnosXMateria = () => {
+export const getNotasAlumnosXMateria = (id) => {
     const notasXMateria = [];
     materias.map(m => {
+
+        notasXMateria.push(
+            {
+                materia: m,
+                alumno: alumnos.filter(a=>{
+                    if(id===""){
+                        return a;
+                    }else{
+                        return a.id===id;
+                    }
+                }).map(a => (
+                    {
+                        alumnoNombre: a,
+                        evaluaciones: evaluacionesAlumnos.filter(eva => (
+                            eva.alumno === a.id && eva.materia === m.id
+                        ))
+                    }
+                ))
+            }
+        )
+
+
+    })
+    return notasXMateria;
+}
+export const getNotasFilterByMateria = (id) => {
+    const notasXMateria = [];
+    materias.filter(m=>m.id===id).map(m => {
 
         notasXMateria.push(
             {
@@ -51,22 +79,10 @@ export const getEvaluacionesAlumnos = () => {
 }
 
 export const ArmarDatos = () => {
-
+    
     materias.map((m, i) => m.profesores.push(profesores[i]));
     materias.map((m, i) => m.evaluaciones.push(...evaluaciones));
-    // alumnos.map(a => (
-    //     materias[0].evaluaciones.map(
-    //         e => (
-    //             evaluacionesAlumnos.push({
-    //                 id: uid(9),
-    //                 evaluacion: e.id,
-    //                 alumno: a.id,
-    //                 nota: "10"
-    //             })
-    //         )
-    //     )
-
-    // ))
+    
     alumnos.map(a => (
         materias.map(m => (
             m.evaluaciones.map(e => (
@@ -76,7 +92,7 @@ export const ArmarDatos = () => {
                         evaluacion: e,
                         alumno: a.id,
                         materia: m.id,
-                        nota: "10"
+                        nota: Math.floor( Math.random()*(10 - 1) + 1)
                     }
                 )
             ))

@@ -6,7 +6,7 @@ export const ScreenHome = () => {
     const [materias, setmaterias] = useState()
     useEffect(() => {
         setmaterias(getMaterias())
-
+       ArmarDatos();
 
     }, [])
 
