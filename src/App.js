@@ -1,11 +1,15 @@
 
+import { BrowserRouter } from "react-router-dom";
+import NavegacionPrincipal from "./Routes/NavegacionPrincipal";
 import { ScreenHome } from "./Screens/ScreenHome";
 
 
 
 function App() {
   return (
-    <ScreenHome />
+    <BrowserRouter>
+      <NavegacionPrincipal />
+    </BrowserRouter>
   )
 }
 
