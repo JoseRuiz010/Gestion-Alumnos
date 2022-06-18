@@ -10,8 +10,8 @@ export const TablaAlumnos = ({ obtenerAlumnos }) => {
     if (!alumnos) return (<div>Cargando....</div>)
 
     return (
-        <div class="overflow-x-auto">
-            <table class="table   w-full">
+        <div className="overflow-x-auto">
+            <table className="table w-full">
 
                 <thead>
                     <tr>

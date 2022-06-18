@@ -1,12 +1,17 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Cards } from '../Components/Cards'
+import { GlobalContext } from '../Context/GlobalContext'
 import { ArmarDatos, getMaterias, getNotasAlumnosXMateria } from '../services/CargarData'
 
 export const ScreenHome = () => {
     const [materias, setmaterias] = useState()
+    const { generarDatos, DatosGenerados } = useContext(GlobalContext)
     useEffect(() => {
         setmaterias(getMaterias())
-       ArmarDatos();
+        if (generarDatos) {
+            ArmarDatos();
+            DatosGenerados();
+        }
 
     }, [])
 

@@ -23,7 +23,7 @@ export const ScreenAlumno = () => {
     return (
         <div className='flex align-middle justify-around mt-8'>
 
-            <div class="card w-96  bg-base-100 shadow-xl">
+            <div className="card w-96  bg-base-100 shadow-xl">
 
                 <figure className="px-10 pt-10">
                     <img src={avatar} alt="Shoes" class="rounded-xl" />
