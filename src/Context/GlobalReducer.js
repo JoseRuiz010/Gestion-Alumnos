@@ -15,6 +15,21 @@ export const GlobalReducer = (globalState, action) => {
                 ...globalState,
                 generarDatos: false,
             }
+        case "agregarAlumno":
+            return {
+                ...globalState,
+                alumnos: [...globalState.alumnos, action.payload],
+            }
+        case "cargarAlumnos":
+            return {
+                ...globalState,
+                alumnos: action.payload,
+            }
+        case "cargarMaterias":
+            return {
+                ...globalState,
+                materias: action.payload,
+            }
 
         default:
             return globalState;

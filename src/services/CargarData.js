@@ -13,11 +13,11 @@ export const getNotasAlumnosXMateria = (id) => {
         notasXMateria.push(
             {
                 materia: m,
-                alumno: alumnos.filter(a=>{
-                    if(id===""){
+                alumno: alumnos.filter(a => {
+                    if (id === "") {
                         return a;
-                    }else{
-                        return a.id===id;
+                    } else {
+                        return a.id === id;
                     }
                 }).map(a => (
                     {
@@ -36,7 +36,7 @@ export const getNotasAlumnosXMateria = (id) => {
 }
 export const getNotasFilterByMateria = (id) => {
     const notasXMateria = [];
-    materias.filter(m=>m.id===id).map(m => {
+    materias.filter(m => m.id === id).map(m => {
 
         notasXMateria.push(
             {
@@ -61,6 +61,10 @@ export const getAlumnosByID = (id) => {
 
     return alumnos.find(a => a.id === id)
 }
+export const agregarAlumnoApi = (alumno) => {
+
+    return alumnos.push(alumno);
+}
 
 export const getProfesores = () => {
     return (profesores)
@@ -79,10 +83,10 @@ export const getEvaluacionesAlumnos = () => {
 }
 
 export const ArmarDatos = () => {
-    
+
     materias.map((m, i) => m.profesores.push(profesores[i]));
     materias.map((m, i) => m.evaluaciones.push(...evaluaciones));
-    
+
     alumnos.map(a => (
         materias.map(m => (
             m.evaluaciones.map(e => (
@@ -92,7 +96,7 @@ export const ArmarDatos = () => {
                         evaluacion: e,
                         alumno: a.id,
                         materia: m.id,
-                        nota: Math.floor( Math.random()*(10 - 1) + 1)
+                        nota: Math.floor(Math.random() * (10 - 1) + 1)
                     }
                 )
             ))

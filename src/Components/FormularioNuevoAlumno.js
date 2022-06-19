@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Form, Field } from 'react-final-form'
+import { GlobalContext } from '../Context/GlobalContext'
+import { uid } from 'uid';
 const FormularioNuevoAlumno = () => {
+    const { changeStateNewAlumno, alumnos, agregarAlumno } = useContext(GlobalContext)
 
     const onSubmit = (values) => {
-        console.log('Hola');
-        alert(JSON.stringify(values, 0, 2))
+        agregarAlumno({ id: uid(9), ...values });
+        changeStateNewAlumno();
     }
 
     const validacion = (values) => {
@@ -20,8 +23,11 @@ const FormularioNuevoAlumno = () => {
             errors.legajo = 'El campo Legajo es requerido'
         } else {
 
-            if (values.legajo.length < 4) {
-                errors.legajo = 'El campo debe tener mas de 6 digitos'
+            if (values.legajo.length < 5) {
+                errors.legajo = 'El campo debe tener mas de 4 digitos'
+            }
+            if (isNaN(values.legajo)) {
+                errors.legajo = 'El campo debe ser numerico'
             }
         }
         if (!values.telefono) {

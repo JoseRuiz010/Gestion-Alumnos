@@ -6,7 +6,7 @@ export const alumnos = [
         apellido: "Ruiz ",
         telefono: "381463721",
         email: "jose@gmail.com ",
-        legajo: "44588 ",
+        legajo: "44588",
         direccion: "Tucuman, Leales"
     },
     {
@@ -68,20 +68,6 @@ export const profesores = [
     },
 ]
 
-export const cursos = [
-    {
-        id: uid(9),
-        descripcion: "Primer Año",
-        alumnos: [],
-        materia: []
-    },
-    {
-        id: uid(9),
-        descripcion: "Segundo Año",
-        alumnos: [],
-        materia: []
-    }
-]
 
 export const materias = [
     {
@@ -121,7 +107,21 @@ export const evaluaciones = [
         descripcion: "Tercer Parcial",
     },
 ]
-
+ 
+export const cursos = [
+    {
+        id: uid(9),
+        descripcion: "Primer Año",
+        alumnos: [],
+        materia: []
+    },
+    {
+        id: uid(9),
+        descripcion: "Segundo Año",
+        alumnos: [],
+        materia: []
+    }
+]
 export const evaluacionesAlumnos = [
 
 ]
