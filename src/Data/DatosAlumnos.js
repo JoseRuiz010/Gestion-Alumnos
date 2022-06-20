@@ -81,7 +81,7 @@ export const evaluaciones = [
     {
         id:"asdfg12",
         descripcion: "Tercer Parcial",
-
+        
     },
     {
         id:"asdfg1ssd2",

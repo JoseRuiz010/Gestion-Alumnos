@@ -74,6 +74,9 @@ export const getCursos = () => {
 export const getMaterias = () => {
     return (cursos[0].materias)
 }
+export const getMateriasById = (id) => {
+    return (cursos[0].materias.find(m=>m.id===id));
+}
 export const getEvaluaciones = () => {
     return (evaluaciones)
 }
