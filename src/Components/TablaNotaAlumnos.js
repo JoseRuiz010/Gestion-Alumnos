@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
+import { alumnos } from '../Data/DatosAlumnos';
 
 export const TablaNotaAlumnos = ({ filtro, mostrarNombre }) => {
     const { id } = useParams();
@@ -20,7 +21,7 @@ export const TablaNotaAlumnos = ({ filtro, mostrarNombre }) => {
                         <HeaderNotaAlumnos materia={evaluaciones.materia.nombre} />
                         {
 
-                            <TablaNotaAlumnosCuerpo evaluaciones={evaluaciones.alumno} mostrarNombre={mostrarNombre} />
+                            <TablaNotaAlumnosCuerpo evaluaciones={evaluaciones.alumno} materia={evaluaciones.materia} mostrarNombre={mostrarNombre} />
 
                         }
                     </div>
@@ -38,8 +39,8 @@ const HeaderNotaAlumnos = ({ materia }) => {
         <h1 className='font-bold text-center mt-3  p-3'>{materia}</h1>
     );
 }
-let sum = 0;
-const TablaNotaAlumnosCuerpo = ({ evaluaciones, mostrarNombre }) => {
+let sum = 0; let bandera = 0;
+const TablaNotaAlumnosCuerpo = ({ evaluaciones, materia, mostrarNombre }) => {
     return (
         <div class="overflow-x-auto">
             <table class="table table-zebra w-full overflow-x-auto">
@@ -47,41 +48,59 @@ const TablaNotaAlumnosCuerpo = ({ evaluaciones, mostrarNombre }) => {
                     <tr className='text-center'>
                         <th>Id</th>
                         {mostrarNombre && <th>Nombre</th>}
-                        <th>Primer Parcial</th>
-                        <th>Segundo Parcial</th>
-                        <th>Tercer Parcial</th>
+                        {
+                            materia.evaluaciones.map(eva => (
+                                <th>{eva.descripcion}</th>
+                            ))
+                        }
+
                         <th>Promedio</th>
 
                     </tr>
                 </thead>
                 <tbody>
-                    {
-
-                        console.log(evaluaciones)
-
-                    }
-                    {
-                        evaluaciones?.map((eva, i) => (
-                            <tr className='text-center'>
-                                <th>#{i + 1}</th>
-                                {mostrarNombre && <td>{eva?.alumnoNombre?.nombre}</td>}
-                                {
-                                    eva?.evaluaciones?.map(({ nota }) => (
-                                        <td>{nota}</td>
-                                    ))
-                                }
-                                <td>{
-                                    eva.evaluaciones.length > 0 ?
-                                        sum = (eva?.evaluaciones?.map(({ nota }) => nota).reduce((previous, current) => (current) += (previous)) / eva.evaluaciones.length).toFixed(1)
-                                        : "No tiene notas"
-                                }
-                                </td>
-                            </tr>
-
-                        ))
-                    }
+                    <NotasTabla evaluaciones={evaluaciones} materia={materia} mostrarNombre={mostrarNombre} />
                 </tbody>
             </table>
         </div>
     );
+}
+
+const NotasTabla = ({ evaluaciones, materia, mostrarNombre }) => {
+
+const validarNota=(EvaluacionDeMateria, evaluacion)=>{
+    let bandera=false;
+    let nota=0;
+    for (let j = 0; j < evaluacion.length; j++) {
+    
+    if(EvaluacionDeMateria===evaluacion[j].evaluacion){
+        bandera=true
+        nota=evaluacion[j].nota;
+    }
+    }
+    console.log(bandera);
+   return <td>{nota}</td>
+}
+    return (
+        <>
+            {
+                evaluaciones.map((eva, i) => (
+                    <tr key={i+Date.now()} className='text-center'>
+                        <th>#{i + 1}</th>
+                        {mostrarNombre && <td>{eva?.alumnoNombre?.nombre}</td>}
+                        {
+                         materia.evaluaciones.map(materia=>validarNota(materia,eva.evaluaciones))
+                        }
+                    <td>{
+                        eva.evaluaciones.length > 0 ?
+                        sum = (eva?.evaluaciones?.filter(({ nota })=>nota!==0).map(({ nota }) => nota).reduce((previous, current) => (current) += (previous)) / eva.evaluaciones.filter(({ nota })=>nota!==0).length).toFixed(1)
+                        : "No tiene notas"
+                    }
+                </td>
+                    </tr>
+
+                ))
+            }
+        </>
+    )
 }

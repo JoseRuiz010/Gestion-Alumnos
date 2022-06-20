@@ -2,18 +2,18 @@ import { uid } from "uid"
 import { alumnos, profesores, cursos, materias, evaluaciones, evaluacionesAlumnos } from "../Data/DatosAlumnos"
 
 export const getAlumnos = () => {
-    return (alumnos)
+    return (cursos[0].alumnos)
 }
 
 
 export const getNotasAlumnosXMateria = (id) => {
     const notasXMateria = [];
-    materias.map(m => {
+    cursos[0].materias.map(m => {
 
         notasXMateria.push(
             {
                 materia: m,
-                alumno: alumnos.filter(a => {
+                alumno: cursos[0].alumnos.filter(a => {
                     if (id === "") {
                         return a;
                     } else {
@@ -23,7 +23,7 @@ export const getNotasAlumnosXMateria = (id) => {
                     {
                         alumnoNombre: a,
                         evaluaciones: evaluacionesAlumnos.filter(eva => (
-                            eva.alumno === a.id && eva.materia === m.id
+                            eva.alumno.id === a.id && eva.materia.id === m.id
                         ))
                     }
                 ))
@@ -36,16 +36,16 @@ export const getNotasAlumnosXMateria = (id) => {
 }
 export const getNotasFilterByMateria = (id) => {
     const notasXMateria = [];
-    materias.filter(m => m.id === id).map(m => {
+    cursos[0].materias.filter(m => m.id === id).map(m => {
 
         notasXMateria.push(
             {
                 materia: m,
-                alumno: alumnos.map(a => (
+                alumno:cursos[0].alumnos.map(a => (
                     {
                         alumnoNombre: a,
                         evaluaciones: evaluacionesAlumnos.filter(eva => (
-                            eva.alumno === a.id && eva.materia === m.id
+                            eva.alumno.id === a.id && eva.materia.id === m.id
                         ))
                     }
                 ))
@@ -59,21 +59,21 @@ export const getNotasFilterByMateria = (id) => {
 
 export const getAlumnosByID = (id) => {
 
-    return alumnos.find(a => a.id === id)
+    return cursos[0].alumnos.find(a => a.id === id)
 }
 export const agregarAlumnoApi = (alumno) => {
 
-    return alumnos.push(alumno);
+    return cursos[0].alumnos.push(alumno);
 }
 
 export const getProfesores = () => {
-    return (profesores)
+    return (cursos[0].profesores)
 }
 export const getCursos = () => {
     return (cursos)
 }
 export const getMaterias = () => {
-    return (materias)
+    return (cursos[0].materias)
 }
 export const getEvaluaciones = () => {
     return (evaluaciones)
@@ -84,24 +84,5 @@ export const getEvaluacionesAlumnos = () => {
 
 export const ArmarDatos = () => {
 
-    materias.map((m, i) => m.profesores.push(profesores[i]));
-    materias.map((m, i) => m.evaluaciones.push(...evaluaciones));
-
-    alumnos.map(a => (
-        materias.map(m => (
-            m.evaluaciones.map(e => (
-                evaluacionesAlumnos.push(
-                    {
-                        id: uid(9),
-                        evaluacion: e,
-                        alumno: a.id,
-                        materia: m.id,
-                        nota: Math.floor(Math.random() * (10 - 1) + 1)
-                    }
-                )
-            ))
-        ))
-
-    ))
-
+    
 }
