@@ -66,7 +66,7 @@ export const agregarAlumnoApi = (alumno) => {
 }
 
 export const getProfesores = () => {
-    return (cursos[0].profesores)
+    return(cursos[0].materias.flatMap(({profesores,nombre,id})=>profesores.flatMap(p=>({...p,nombreMateria:nombre,idMateria:id}))))
 }
 export const getCursos = () => {
     return (cursos)

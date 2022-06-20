@@ -94,21 +94,21 @@ export const materias = [
         id:"aaa951a8c",
         nombre: "Matematica 1",
         icono: "https://cdn-icons-png.flaticon.com/512/2941/2941603.png",
-        profesores: [],
+        profesores: [profesores[0]],
         evaluaciones: evaluaciones
     },
     {
         id: "241cc2935",
         nombre: "Lengua",
         icono: "https://ele.chaco.gob.ar/pluginfile.php/920081/course/section/225460/lengua-y-literatura.png",
-        profesores: [],
+        profesores: [profesores[1]],
         evaluaciones: evaluaciones
     },
     {
         id: "41cc29356",
         nombre: "Fisica",
         icono: "https://i.pinimg.com/736x/e5/ea/be/e5eabe46c0467ab80a05bde5988dd35e.jpg",
-        profesores:[],
+        profesores:[profesores[2]],
         evaluaciones: evaluaciones
     }
 ]

@@ -10,6 +10,7 @@ import { ScreenAlumno } from '../Screens/ScreenAlumno';
 import { ScreenAlumnos } from '../Screens/ScreenAlumnos';
 import { ScreenHome } from '../Screens/ScreenHome';
 import { ScreenNotasAlumnos } from '../Screens/ScreenNotasAlumnos';
+import { Screenprofesores } from '../Screens/Screenprofesores';
 const NavegacionPrincipal = () => {
     return (
         <>
@@ -21,6 +22,7 @@ const NavegacionPrincipal = () => {
                 <Route path="/alumnos/nota/:id" element={<ScreenNotasAlumnos />} />
                 <Route path="/materias" element={<ScreenHome />} />
                 <Route path="/materias/:id" element={<AlumnosPorMateria />} />
+                <Route path="/profesores" element={<Screenprofesores />} />
                 <Route
                     path="*"
                     element={
