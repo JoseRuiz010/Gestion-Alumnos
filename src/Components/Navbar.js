@@ -1,21 +1,20 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { NavLink } from "react-router-dom"
-import { GlobalContext } from '../Context/GlobalContext'
-const Navbar = () => {
-    const { isOpenNavbar, changeIsOpenNavbar } = useContext(GlobalContext)
+ const Navbar = () => {
+    // const { isOpenNavbar, changeIsOpenNavbar } = useContext(GlobalContext)
     return (
         <>
 
-            <div class="navbar bg-base-100 lg:px-10">
-                <div class="navbar-start">
-                    <div class="dropdown">
-                        <label tabindex="0" class="btn btn-ghost lg:hidden">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+            <div className="navbar bg-base-100 lg:px-10">
+                <div className="navbar-start">
+                    <div className="dropdown">
+                        <label tabIndex="0" className="btn btn-ghost lg:hidden">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path  strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                         </label>
-                        <div class="navbar-center hidden lg:block">
+                        <div className="navbar-center hidden lg:block">
                             <img className='h-12 cursor-pointer' src='https://cdn-icons-png.flaticon.com/512/855/855601.png' alt='Logo' />
                         </div>
-                        <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+                        <ul tabIndex="0" className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                             <li><NavLink to={"/"}>Home</NavLink> </li>
                             <li><NavLink to={"/alumnos"}>Alumnos</NavLink></li>
                             <li><NavLink to={"/materias"}>Materias</NavLink></li>
@@ -24,22 +23,22 @@ const Navbar = () => {
                         </ul>
                     </div>
                 </div>
-                <div class="navbar-center lg:hidden">
+                <div className="navbar-center lg:hidden">
                     <img className='h-12 cursor-pointer' src='https://cdn-icons-png.flaticon.com/512/855/855601.png' alt='Logo' />
 
                 </div>
-                <div class="navbar-center hidden lg:flex">
-                    <ul class="menu menu-horizontal p-0">
+                <div className="navbar-center hidden lg:flex">
+                    <ul className="menu menu-horizontal p-0">
                         <li><NavLink to={"/"}>Home</NavLink> </li>
                         <li><NavLink to={"/alumnos"}>Alumnos</NavLink></li>
                         <li><NavLink to={"/materias"}>Materias</NavLink></li>
                         <li><NavLink to={"/profesores"}>Profesores</NavLink></li>
                     </ul>
                 </div>
-                <div class="navbar-end">
-                    <label tabindex="0" class="btn btn-ghost btn-circle avatar">
-                        <div class="w-10 rounded-full">
-                            <img src="https://api.lorem.space/image/face?hash=33791" />
+                <div className="navbar-end">
+                    <label tabIndex="0" className="btn btn-ghost btn-circle avatar">
+                        <div className="w-10 rounded-full">
+                            <img src="https://api.lorem.space/image/face?hash=33791" alt=''/>
                         </div>
                     </label>
                 </div>

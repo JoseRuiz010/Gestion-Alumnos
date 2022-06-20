@@ -1,7 +1,7 @@
 import React from 'react'
 import { NavLink } from "react-router-dom"
 export const Cards = ({ materia }) => {
-    const { id, nombre, icono, profesores, evaluaciones } = materia
+    const { id, nombre, icono} = materia
     return (
         <div className='m-6 mx-auto py-8 px-8 max-w-sm md:mx-2 bg-white rounded-md shadow-xl hover:scale-105'>
             <div className='flex space-x-2 '>

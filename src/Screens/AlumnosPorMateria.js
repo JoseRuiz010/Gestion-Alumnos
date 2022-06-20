@@ -1,9 +1,9 @@
 import React from 'react'
 import { useParams } from "react-router-dom";
-import { ScreenNotasAlumnos } from './ScreenNotasAlumnos';
+import { TablaNotaAlumnos } from '../Components/Tabla Nota Alumnos/TablaNotaAlumnos';
+ 
 import { getNotasFilterByMateria } from '../services/CargarData'
-import { TablaNotaAlumnos } from '../Components/TablaNotaAlumnos';
-
+ 
 const AlumnosPorMateria = () => {
     const { id } = useParams();
     return (

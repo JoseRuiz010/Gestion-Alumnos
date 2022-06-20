@@ -26,7 +26,7 @@ export const ScreenAlumno = () => {
             <div className="card w-96  bg-base-100 shadow-xl">
 
                 <figure className="px-10 pt-10">
-                    <img src={avatar} alt="Shoes" class="rounded-xl" />
+                    <img src={avatar} alt="Shoes" className="rounded-xl" />
                 </figure>
                 <div className="card-body items-center text-center">
                     <h2 className="card-title mb-5">{nombre + " " + apellido}</h2>

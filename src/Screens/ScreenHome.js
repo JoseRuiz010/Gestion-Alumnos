@@ -1,16 +1,13 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Cards } from '../Components/Cards'
 import { GlobalContext } from '../Context/GlobalContext'
 import { ArmarDatos, getMaterias } from '../services/CargarData'
 
 export const ScreenHome = () => {
 
-    const { materias, generarDatos, DatosGenerados, cargarMaterias } = useContext(GlobalContext)
+    const { materias,  cargarMaterias } = useContext(GlobalContext)
     useEffect(() => {
-        if (generarDatos) {
-            ArmarDatos();
-            DatosGenerados();
-        }
+       
         cargarMaterias(getMaterias())
     }, [])
 
@@ -24,7 +21,7 @@ export const ScreenHome = () => {
                 <h1 className='text-center font-bold text-lg'>Curso: Primer Año</h1>
                 <div className='grid mx-auto  lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 sm:mx-auto'>
                     {
-                        materias.map(m => <Cards materia={m} />)
+                        materias.map(m => <Cards key={m.id+Date.now()+2314} materia={m} />)
                     }
                 </div>
 

@@ -1,5 +1,4 @@
-import { uid } from "uid"
-import { alumnos, profesores, cursos, materias, evaluaciones, evaluacionesAlumnos } from "../Data/DatosAlumnos"
+ import { cursos, evaluaciones, evaluacionesAlumnos } from "../Data/DatosAlumnos"
 
 export const getAlumnos = () => {
     return (cursos[0].alumnos)
@@ -36,7 +35,7 @@ export const getNotasAlumnosXMateria = (id) => {
 }
 export const getNotasFilterByMateria = (id) => {
     const notasXMateria = [];
-    cursos[0].materias.filter(m => m.id === id).map(m => {
+    cursos[0].materias.filter(m => m.id === id).map(m =>{
 
         notasXMateria.push(
             {

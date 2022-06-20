@@ -43,7 +43,7 @@ export const GlobalStateProvider = ({ children }) => {
     }
     const cargarMaterias = (materias) => {
 
-        console.log(materias);
+        
 
         dispatch({
             type: "cargarMaterias",

@@ -1,52 +1,17 @@
 import React, { useContext } from 'react'
 import { Form, Field } from 'react-final-form'
-import { GlobalContext } from '../Context/GlobalContext'
+import { GlobalContext } from '../../Context/GlobalContext'
 import { uid } from 'uid';
+import { validacion } from '../../Validaciones/ValidacionNuevoAlumno';
+import { InputGroup } from './InpurGroup';
+
 const FormularioNuevoAlumno = () => {
-    const { changeStateNewAlumno, alumnos, agregarAlumno } = useContext(GlobalContext)
+    const { changeStateNewAlumno, agregarAlumno } = useContext(GlobalContext)
 
     const onSubmit = (values) => {
         agregarAlumno({ id: uid(9), ...values });
         changeStateNewAlumno();
-    }
-
-    const validacion = (values) => {
-        const errors = {}
-
-        if (!values.nombre) {
-            errors.nombre = 'El campo Nombre es requerido'
-        }
-        if (!values.apellido) {
-            errors.apellido = 'El campo Apellido es requerido'
-        }
-        if (!values.legajo) {
-            errors.legajo = 'El campo Legajo es requerido'
-        } else {
-
-            if (values.legajo.length < 5) {
-                errors.legajo = 'El campo debe tener mas de 4 digitos'
-            }
-            if (isNaN(values.legajo)) {
-                errors.legajo = 'El campo debe ser numerico'
-            }
-        }
-        if (!values.telefono) {
-            errors.telefono = 'El campo Telefono es requerido'
-        } else {
-            if (isNaN(values.telefono)) {
-                errors.telefono = 'El campo Telefono debe ser numerico'
-            }
-        }
-        if (!values.email) {
-            errors.email = 'El campo Email es requerido'
-        }
-        if (!values.direccion) {
-            errors.direccion = 'El campo Email es requerido'
-        }
-
-
-        return errors
-    }
+    }   
 
     return (
         <div className='shadow-2xl w-11/12 mx-auto p-2 max-w-xl rounded-sm'>
@@ -102,16 +67,5 @@ const FormularioNuevoAlumno = () => {
 
     )
 }
-const MensajeError = ({ mensaje }) => <span className='block text-red-600 ml-4'>{mensaje}</span>
 
-const InputGroup = ({ input, textLabel, meta }) => (
-    <div className='form-control ml-2 mb-3'>
-        <label className="input-group ">
-            <span className='w-32 sm:w-1/4' >{textLabel}</span>
-            <input type="text" {...input} placeholder={textLabel} className="input input-info input-sm w-full" />
-        </label>
-        {meta.error && meta.touched && <MensajeError mensaje={meta.error} />}
-    </div>
-
-)
 export default FormularioNuevoAlumno
