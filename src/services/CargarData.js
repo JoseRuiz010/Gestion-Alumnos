@@ -89,11 +89,6 @@ export const CargarNotaMateria = (notas, idMateria, idEvaluacion) => {
     let alumnos = idAlumnos.map(a => getAlumnosByID(a))
     let notasDeAlu = idAlumnos.map(a => notas[a])
 
-    // console.log(materia);
-    // console.log(evaluacion);
-    // console.log(alumnos);
-    // console.log(notasDeAlu);
-
     idAlumnos.map((a, i) => {
         evaluacionesAlumnos.push(
             {
@@ -101,17 +96,29 @@ export const CargarNotaMateria = (notas, idMateria, idEvaluacion) => {
                 evaluacion: evaluacion,
                 alumno: alumnos[i],
                 materia: materia,
-                nota:parseInt(notasDeAlu[i])
+                nota: parseInt(notasDeAlu[i])
             }
         )
     })
 
     console.log(notasXMateria);
-    /*
-    ,
-    */
+}
 
+export const actualizarNotas = (notas, idMateria, idEvaluacion) => {
+    console.log(idMateria);
+    console.log(idEvaluacion);
+    console.log(notas);
+    let idAlumnos = (Object.keys(notas));
+    console.log(idAlumnos.includes("bffaf5f41d"), "bffaf5f41");
+    evaluacionesAlumnos.map((e, i) => {
 
+        if (e.materia.id === idMateria & e.evaluacion.id == idEvaluacion & idAlumnos.includes(e.alumno.id)) {
+            e.nota = parseInt(notas[e.alumno.id])
+            console.log(e);
+            return e
+        }
+        return e
+    })
 }
 
 
