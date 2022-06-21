@@ -41,7 +41,7 @@ const Select = ({ evaluaciones, idMateria }) => {
         setidEvaluacion(idEvaluacion);
     }
     return (
-        <div class="form-control w-full mx-auto">
+        <div className="form-control w-full mx-auto">
             <Form
                 onSubmit={onSubmit}
                 render={({ handleSubmit }) => (
@@ -49,10 +49,10 @@ const Select = ({ evaluaciones, idMateria }) => {
                         <Field name='idEvaluacion' >
                             {({ input, meta }) => (
                                 <>
-                                    <label class="label">
-                                        <span class="label-text">Seleccione la Evaluacion </span>
+                                    <label className="label">
+                                        <span className="label-text">Seleccione la Evaluacion </span>
                                     </label>
-                                    <select onClick={() => setidEvaluacion(undefined)} {...input} class="select w-52 sm:w-80 select-bordered" >
+                                    <select onClick={() => setidEvaluacion(undefined)} {...input} className="select w-52 sm:w-80 select-bordered" >
                                         <option value={0} >Seleccionar...</option>
                                         {
                                             evaluaciones.map(e => (
@@ -63,7 +63,7 @@ const Select = ({ evaluaciones, idMateria }) => {
                                 </>
                             )}
                         </Field>
-                        <button type='submit' class="btn btn-success mx-3">Buscar</button>
+                        <button type='submit' className="btn btn-success mx-3">Buscar</button>
                     </form>
 
                 )}
@@ -115,7 +115,7 @@ const BuscarEvaluacion = ({ idMateria, idEvaluacion }) => {
                                     ))
                                 }
                                 <div className='flex justify-center'>
-                                    <button type='submit' class="btn btn-success mx-auto">Cargar</button>
+                                    <button type='submit' className="btn btn-success mx-auto">Cargar</button>
                                 </div>
                             </form>)}
                     />
@@ -140,7 +140,7 @@ const BuscarEvaluacion = ({ idMateria, idEvaluacion }) => {
                                 ))
                             }
                             <div className='flex justify-center'>
-                                <button type='submit' class="btn btn-success mx-auto">Actualizar</button>
+                                <button type='submit' className="btn btn-success mx-auto">Actualizar</button>
                             </div>
                         </form>)}
                 />
@@ -155,9 +155,9 @@ const BuscarEvaluacion = ({ idMateria, idEvaluacion }) => {
 
 const InputGroupNota = ({ input, nombre, meta }) => (
     <div className='form-control ml-2 mb-3 mx-auto '>
-        <label class="input-group justify-center mx-auto">
+        <label className="input-group justify-center mx-auto">
             <span className='w-32  sm:w-1/4'>{nombre}</span>
-            <input type="text" initialValue={"10"} {...input} placeholder="Nota" class="input input-bordered " />
+            <input type="text" initialValue={"10"} {...input} placeholder="Nota" className="input input-bordered " />
         </label>
         {meta.error && meta.touched && <MensajeError mensaje={meta.error} />}
     </div>

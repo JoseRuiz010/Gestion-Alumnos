@@ -20,7 +20,6 @@ export const TablaNotaAlumnos = ({ filtro, mostrarNombre }) => {
             {
                 notasAlumnos.map(evaluaciones => (
                     <div key={evaluaciones} className='shadow-lg p-2' >
-                        {/* <button class="btn btn-outline btn-info m-3" onClick={()=>navigate(`/materias/cargarNotas/${id}`)}>Cargar Notas</button> */}
                         <HeaderNotaAlumnos materia={evaluaciones.materia.nombre} />
                         {
                             <TablaNotaAlumnosCuerpo evaluaciones={evaluaciones.alumno} materia={evaluaciones.materia} mostrarNombre={mostrarNombre} />

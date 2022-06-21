@@ -19,8 +19,8 @@ const AlumnosPorMateria = () => {
         <div className='w-full p-2'>
             <HeaderDatosPersonales {...profesores[0]} />
             <div className="flex justify-around md:w-10/12  mx-auto">
-                <button class="btn btn-outline btn-info m-3" onClick={() => navigate(`/materias/cargarNotas/${id}`)}>Cargar Notas</button>
-                <button class="btn btn-outline btn-info m-3" onClick={() => navigate(`/materias/cargarNotas/${id}`)}>Agregar Evaluacion</button>
+                <button className="btn btn-outline btn-info m-3" onClick={() => navigate(`/materias/cargarNotas/${id}`)}>Cargar Notas</button>
+                <button className="btn btn-outline btn-info m-3" onClick={() => navigate(`/materias/cargarNotas/${id}`)}>Agregar Evaluacion</button>
             </div>
 
             <TablaNotaAlumnos filtro={getNotasFilterByMateria(id)} mostrarNombre={true} />
