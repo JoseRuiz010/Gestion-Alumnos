@@ -17,7 +17,7 @@ export const NotasTabla = ({ evaluaciones, materia, mostrarNombre }) => {
                         }
                         <td>{
                             eva.evaluaciones.length > 0 ?
-                                (eva?.evaluaciones?.filter(({ nota }) => nota !== 0).map(({ nota }) => nota).reduce((previous, current) => (current) += (previous)) / eva.evaluaciones.filter(({ nota }) => nota !== 0).length).toFixed(1)
+                                (eva?.evaluaciones?.filter(({ nota }) => nota !== "-").map(({ nota }) => nota).reduce((previous, current) => (current) += (previous)) / eva.evaluaciones.filter(({ nota }) => nota !== 0).length).toFixed(1)
                                 : "No tiene notas"
                         }
                         </td>
