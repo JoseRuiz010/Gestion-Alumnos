@@ -1,7 +1,7 @@
 import { uid } from 'uid';
 export const alumnos = [
     {
-        id:"356511af6",
+        id: "356511af6",
         nombre: "Jose",
         apellido: "Ruiz ",
         telefono: "381463721",
@@ -10,7 +10,7 @@ export const alumnos = [
         direccion: "Tucuman, Leales"
     },
     {
-        id:"bffaf5f41",
+        id: "bffaf5f41",
         nombre: "Carlos",
         apellido: "Ruiz",
         telefono: "3816234808",
@@ -28,7 +28,7 @@ export const alumnos = [
         direccion: "San Miguel de Tucuman"
     },
     {
-        id:"d57237114",
+        id: "d57237114",
         nombre: "Hector",
         apellido: "Figueroa",
         telefono: "3814631258",
@@ -71,27 +71,27 @@ export const profesores = [
 
 export const evaluaciones = [
     {
-        id:"qwer784",
+        id: "qwer784",
         descripcion: "Primer Parcial",
     },
     {
-        id:"asdfrt14",
+        id: "asdfrt14",
         descripcion: "Segundo Parcial",
     },
     {
-        id:"asdfg12",
+        id: "asdfg12",
         descripcion: "Tercer Parcial",
-        
+
     },
     {
-        id:"asdfg1ssd2",
+        id: "asdfg1ssd2",
         descripcion: "cuarto Parcial",
     },
 ]
- 
+
 export const materias = [
     {
-        id:"aaa951a8c",
+        id: "aaa951a8c",
         nombre: "Matematica 1",
         icono: "https://cdn-icons-png.flaticon.com/512/2941/2941603.png",
         profesores: [profesores[0]],
@@ -108,7 +108,7 @@ export const materias = [
         id: "41cc29356",
         nombre: "Fisica",
         icono: "https://i.pinimg.com/736x/e5/ea/be/e5eabe46c0467ab80a05bde5988dd35e.jpg",
-        profesores:[profesores[2]],
+        profesores: [profesores[2]],
         evaluaciones: evaluaciones
     }
 ]
@@ -128,261 +128,261 @@ export const cursos = [
     }
 ]
 export const evaluacionesAlumnos = [
-{
-    id: "1",
-    evaluacion:evaluaciones[0],
-    alumno: alumnos[0],
-    materia: materias[0],
-    nota: Math.floor(Math.random() * (10 - 1) + 1)
-},
-{
-    id: "2",
-    evaluacion:evaluaciones[1],
-    alumno: alumnos[0],
-    materia: materias[0],
-    nota: Math.floor(Math.random() * (10 - 1) + 1)
-},
-{
-    id: "3",
-    evaluacion:evaluaciones[2],
-    alumno: alumnos[0],
-    materia: materias[0],
-    nota: Math.floor(Math.random() * (10 - 1) + 1)
-},
-{
-    id: "4",
-    evaluacion:evaluaciones[0],
-    alumno: alumnos[0],
-    materia: materias[1],
-    nota: Math.floor(Math.random() * (10 - 1) + 1)
-},
-{
-    id: "5",
-    evaluacion:evaluaciones[1],
-    alumno: alumnos[0],
-    materia: materias[1],
-    nota: Math.floor(Math.random() * (10 - 1) + 1)
-},
-{
-    id: "6",
-    evaluacion:evaluaciones[2],
-    alumno: alumnos[0],
-    materia: materias[1],
-    nota: Math.floor(Math.random() * (10 - 1) + 1)
-},
-{
-    id: "7",
-    evaluacion:evaluaciones[0],
-    alumno: alumnos[0],
-    materia: materias[2],
-    nota: Math.floor(Math.random() * (10 - 1) + 1)
-},
-{
-    id: "8",
-    evaluacion:evaluaciones[1],
-    alumno: alumnos[0],
-    materia: materias[2],
-    nota: Math.floor(Math.random() * (10 - 1) + 1)
-},
-{
-    id: "9",
-    evaluacion:evaluaciones[2],
-    alumno: alumnos[0],
-    materia: materias[2],
-    nota: Math.floor(Math.random() * (10 - 1) + 1)
-},
-// Alumno ############################################
-{
-    id: "10",
-    evaluacion:evaluaciones[0],
-    alumno: alumnos[1],
-    materia: materias[0],
-    nota: Math.floor(Math.random() * (10 - 1) + 1)
-},
-{
-    id: "11",
-    evaluacion:evaluaciones[1],
-    alumno: alumnos[1],
-    materia: materias[0],
-    nota: Math.floor(Math.random() * (10 - 1) + 1)
-},
-{
-    id: "12",
-    evaluacion:evaluaciones[2],
-    alumno: alumnos[1],
-    materia: materias[0],
-    nota: Math.floor(Math.random() * (10 - 1) + 1)
-},
-{
-    id: "13",
-    evaluacion:evaluaciones[0],
-    alumno: alumnos[1],
-    materia: materias[1],
-    nota: Math.floor(Math.random() * (10 - 1) + 1)
-},
-{
-    id: "14",
-    evaluacion:evaluaciones[1],
-    alumno: alumnos[1],
-    materia: materias[1],
-    nota: Math.floor(Math.random() * (10 - 1) + 1)
-},
-{
-    id: "15",
-    evaluacion:evaluaciones[2],
-    alumno: alumnos[1],
-    materia: materias[1],
-    nota: Math.floor(Math.random() * (10 - 1) + 1)
-},
-{
-    id: "16",
-    evaluacion:evaluaciones[0],
-    alumno: alumnos[1],
-    materia: materias[2],
-    nota: Math.floor(Math.random() * (10 - 1) + 1)
-},
-{
-    id: "17",
-    evaluacion:evaluaciones[1],
-    alumno: alumnos[1],
-    materia: materias[2],
-    nota: Math.floor(Math.random() * (10 - 1) + 1)
-},
-{
-    id: "18",
-    evaluacion:evaluaciones[2],
-    alumno: alumnos[1],
-    materia: materias[2],
-    nota: Math.floor(Math.random() * (10 - 1) + 1)
-},
-// Alumno ############################################
-{
-    id: "19",
-    evaluacion:evaluaciones[0],
-    alumno: alumnos[2],
-    materia: materias[0],
-    nota: Math.floor(Math.random() * (10 - 1) + 1)
-},
-{
-    id: "20",
-    evaluacion:evaluaciones[1],
-    alumno: alumnos[2],
-    materia: materias[0],
-    nota: Math.floor(Math.random() * (10 - 1) + 1)
-},
-{
-    id: "21",
-    evaluacion:evaluaciones[2],
-    alumno: alumnos[2],
-    materia: materias[0],
-    nota: Math.floor(Math.random() * (10 - 1) + 1)
-},
-{
-    id: "22",
-    evaluacion:evaluaciones[0],
-    alumno: alumnos[2],
-    materia: materias[1],
-    nota: Math.floor(Math.random() * (10 - 1) + 1)
-},
-{
-    id: "23",
-    evaluacion:evaluaciones[1],
-    alumno: alumnos[2],
-    materia: materias[1],
-    nota: Math.floor(Math.random() * (10 - 1) + 1)
-},
-{
-    id: "24",
-    evaluacion:evaluaciones[2],
-    alumno: alumnos[2],
-    materia: materias[1],
-    nota: Math.floor(Math.random() * (10 - 1) + 1)
-},
-{
-    id: "25",
-    evaluacion:evaluaciones[0],
-    alumno: alumnos[2],
-    materia: materias[2],
-    nota: Math.floor(Math.random() * (10 - 1) + 1)
-},
-{
-    id: "26",
-    evaluacion:evaluaciones[1],
-    alumno: alumnos[2],
-    materia: materias[2],
-    nota: Math.floor(Math.random() * (10 - 1) + 1)
-},
-{
-    id: "27",
-    evaluacion:evaluaciones[2],
-    alumno: alumnos[2],
-    materia: materias[2],
-    nota: Math.floor(Math.random() * (10 - 1) + 1)
-},
-// Alumno ############################################
-{
-    id: "28",
-    evaluacion:evaluaciones[0],
-    alumno: alumnos[3],
-    materia: materias[0],
-    nota: Math.floor(Math.random() * (10 - 1) + 1)
-},
-{
-    id: "29",
-    evaluacion:evaluaciones[1],
-    alumno: alumnos[3],
-    materia: materias[0],
-    nota: Math.floor(Math.random() * (10 - 1) + 1)
-},
-{
-    id: "30",
-    evaluacion:evaluaciones[2],
-    alumno: alumnos[3],
-    materia: materias[0],
-    nota: Math.floor(Math.random() * (10 - 1) + 1)
-},
-{
-    id: "31",
-    evaluacion:evaluaciones[0],
-    alumno: alumnos[3],
-    materia: materias[1],
-    nota: Math.floor(Math.random() * (10 - 1) + 1)
-},
-{
-    id: "32",
-    evaluacion:evaluaciones[1],
-    alumno: alumnos[3],
-    materia: materias[1],
-    nota: Math.floor(Math.random() * (10 - 1) + 1)
-},
-{
-    id: "33",
-    evaluacion:evaluaciones[2],
-    alumno: alumnos[3],
-    materia: materias[1],
-    nota: Math.floor(Math.random() * (10 - 1) + 1)
-},
-{
-    id: "34",
-    evaluacion:evaluaciones[0],
-    alumno: alumnos[3],
-    materia: materias[2],
-    nota: Math.floor(Math.random() * (10 - 1) + 1)
-},
-{
-    id: "35",
-    evaluacion:evaluaciones[1],
-    alumno: alumnos[3],
-    materia: materias[2],
-    nota: Math.floor(Math.random() * (10 - 1) + 1)
-},
-{
-    id: "36",
-    evaluacion:evaluaciones[2],
-    alumno: alumnos[3],
-    materia: materias[2],
-    nota: Math.floor(Math.random() * (10 - 1) + 1)
-},
-// Alumno ############################################
+    {
+        id: "1",
+        evaluacion: evaluaciones[0],
+        alumno: alumnos[0],
+        materia: materias[0],
+        nota: Math.floor(Math.random() * (10 - 1) + 1)
+    },
+    {
+        id: "2",
+        evaluacion: evaluaciones[1],
+        alumno: alumnos[0],
+        materia: materias[0],
+        nota: Math.floor(Math.random() * (10 - 1) + 1)
+    },
+    {
+        id: "3",
+        evaluacion: evaluaciones[2],
+        alumno: alumnos[0],
+        materia: materias[0],
+        nota: Math.floor(Math.random() * (10 - 1) + 1)
+    },
+    {
+        id: "4",
+        evaluacion: evaluaciones[0],
+        alumno: alumnos[0],
+        materia: materias[1],
+        nota: Math.floor(Math.random() * (10 - 1) + 1)
+    },
+    {
+        id: "5",
+        evaluacion: evaluaciones[1],
+        alumno: alumnos[0],
+        materia: materias[1],
+        nota: Math.floor(Math.random() * (10 - 1) + 1)
+    },
+    {
+        id: "6",
+        evaluacion: evaluaciones[2],
+        alumno: alumnos[0],
+        materia: materias[1],
+        nota: Math.floor(Math.random() * (10 - 1) + 1)
+    },
+    {
+        id: "7",
+        evaluacion: evaluaciones[0],
+        alumno: alumnos[0],
+        materia: materias[2],
+        nota: Math.floor(Math.random() * (10 - 1) + 1)
+    },
+    {
+        id: "8",
+        evaluacion: evaluaciones[1],
+        alumno: alumnos[0],
+        materia: materias[2],
+        nota: Math.floor(Math.random() * (10 - 1) + 1)
+    },
+    {
+        id: "9",
+        evaluacion: evaluaciones[2],
+        alumno: alumnos[0],
+        materia: materias[2],
+        nota: Math.floor(Math.random() * (10 - 1) + 1)
+    },
+    // Alumno ############################################
+    {
+        id: "10",
+        evaluacion: evaluaciones[0],
+        alumno: alumnos[1],
+        materia: materias[0],
+        nota: Math.floor(Math.random() * (10 - 1) + 1)
+    },
+    {
+        id: "11",
+        evaluacion: evaluaciones[1],
+        alumno: alumnos[1],
+        materia: materias[0],
+        nota: Math.floor(Math.random() * (10 - 1) + 1)
+    },
+    {
+        id: "12",
+        evaluacion: evaluaciones[2],
+        alumno: alumnos[1],
+        materia: materias[0],
+        nota: Math.floor(Math.random() * (10 - 1) + 1)
+    },
+    {
+        id: "13",
+        evaluacion: evaluaciones[0],
+        alumno: alumnos[1],
+        materia: materias[1],
+        nota: Math.floor(Math.random() * (10 - 1) + 1)
+    },
+    {
+        id: "14",
+        evaluacion: evaluaciones[1],
+        alumno: alumnos[1],
+        materia: materias[1],
+        nota: Math.floor(Math.random() * (10 - 1) + 1)
+    },
+    {
+        id: "15",
+        evaluacion: evaluaciones[2],
+        alumno: alumnos[1],
+        materia: materias[1],
+        nota: Math.floor(Math.random() * (10 - 1) + 1)
+    },
+    {
+        id: "16",
+        evaluacion: evaluaciones[0],
+        alumno: alumnos[1],
+        materia: materias[2],
+        nota: Math.floor(Math.random() * (10 - 1) + 1)
+    },
+    {
+        id: "17",
+        evaluacion: evaluaciones[1],
+        alumno: alumnos[1],
+        materia: materias[2],
+        nota: Math.floor(Math.random() * (10 - 1) + 1)
+    },
+    {
+        id: "18",
+        evaluacion: evaluaciones[2],
+        alumno: alumnos[1],
+        materia: materias[2],
+        nota: Math.floor(Math.random() * (10 - 1) + 1)
+    },
+    // Alumno ############################################
+    {
+        id: "19",
+        evaluacion: evaluaciones[0],
+        alumno: alumnos[2],
+        materia: materias[0],
+        nota: Math.floor(Math.random() * (10 - 1) + 1)
+    },
+    {
+        id: "20",
+        evaluacion: evaluaciones[1],
+        alumno: alumnos[2],
+        materia: materias[0],
+        nota: Math.floor(Math.random() * (10 - 1) + 1)
+    },
+    {
+        id: "21",
+        evaluacion: evaluaciones[2],
+        alumno: alumnos[2],
+        materia: materias[0],
+        nota: Math.floor(Math.random() * (10 - 1) + 1)
+    },
+    {
+        id: "22",
+        evaluacion: evaluaciones[0],
+        alumno: alumnos[2],
+        materia: materias[1],
+        nota: Math.floor(Math.random() * (10 - 1) + 1)
+    },
+    {
+        id: "23",
+        evaluacion: evaluaciones[1],
+        alumno: alumnos[2],
+        materia: materias[1],
+        nota: Math.floor(Math.random() * (10 - 1) + 1)
+    },
+    {
+        id: "24",
+        evaluacion: evaluaciones[2],
+        alumno: alumnos[2],
+        materia: materias[1],
+        nota: Math.floor(Math.random() * (10 - 1) + 1)
+    },
+    {
+        id: "25",
+        evaluacion: evaluaciones[0],
+        alumno: alumnos[2],
+        materia: materias[2],
+        nota: Math.floor(Math.random() * (10 - 1) + 1)
+    },
+    {
+        id: "26",
+        evaluacion: evaluaciones[1],
+        alumno: alumnos[2],
+        materia: materias[2],
+        nota: Math.floor(Math.random() * (10 - 1) + 1)
+    },
+    {
+        id: "27",
+        evaluacion: evaluaciones[2],
+        alumno: alumnos[2],
+        materia: materias[2],
+        nota: Math.floor(Math.random() * (10 - 1) + 1)
+    },
+    // Alumno ############################################
+    {
+        id: "28",
+        evaluacion: evaluaciones[0],
+        alumno: alumnos[3],
+        materia: materias[0],
+        nota: Math.floor(Math.random() * (10 - 1) + 1)
+    },
+    {
+        id: "29",
+        evaluacion: evaluaciones[1],
+        alumno: alumnos[3],
+        materia: materias[0],
+        nota: Math.floor(Math.random() * (10 - 1) + 1)
+    },
+    {
+        id: "30",
+        evaluacion: evaluaciones[2],
+        alumno: alumnos[3],
+        materia: materias[0],
+        nota: Math.floor(Math.random() * (10 - 1) + 1)
+    },
+    {
+        id: "31",
+        evaluacion: evaluaciones[0],
+        alumno: alumnos[3],
+        materia: materias[1],
+        nota: Math.floor(Math.random() * (10 - 1) + 1)
+    },
+    {
+        id: "32",
+        evaluacion: evaluaciones[1],
+        alumno: alumnos[3],
+        materia: materias[1],
+        nota: Math.floor(Math.random() * (10 - 1) + 1)
+    },
+    {
+        id: "33",
+        evaluacion: evaluaciones[2],
+        alumno: alumnos[3],
+        materia: materias[1],
+        nota: Math.floor(Math.random() * (10 - 1) + 1)
+    },
+    {
+        id: "34",
+        evaluacion: evaluaciones[0],
+        alumno: alumnos[3],
+        materia: materias[2],
+        nota: Math.floor(Math.random() * (10 - 1) + 1)
+    },
+    {
+        id: "35",
+        evaluacion: evaluaciones[1],
+        alumno: alumnos[3],
+        materia: materias[2],
+        nota: Math.floor(Math.random() * (10 - 1) + 1)
+    },
+    {
+        id: "36",
+        evaluacion: evaluaciones[2],
+        alumno: alumnos[3],
+        materia: materias[2],
+        nota: Math.floor(Math.random() * (10 - 1) + 1)
+    },
+    // Alumno ############################################
 
 ]

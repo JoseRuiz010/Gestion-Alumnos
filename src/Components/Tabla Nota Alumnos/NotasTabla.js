@@ -2,12 +2,14 @@ import React from 'react'
 import { ValidarNota } from './ValidarNota';
 
 export const NotasTabla = ({ evaluaciones, materia, mostrarNombre }) => {
-
+    console.log('====================================');
+    console.log(evaluaciones);
+    console.log('====================================');
     return (
         <>
             {
                 evaluaciones.map((eva, i) => (
-                    <tr key={i + Date.now()+eva.alumnoNombre.nombre} className='text-center'>
+                    <tr key={i + Date.now() + eva.alumnoNombre.nombre} className='text-center'>
                         <th>#{i + 1}</th>
                         {mostrarNombre && <td>{eva?.alumnoNombre?.nombre}</td>}
                         {
