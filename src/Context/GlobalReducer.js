@@ -1,5 +1,15 @@
 export const GlobalReducer = (globalState, action) => {
     switch (action.type) {
+        case "login":
+            return {
+                ...globalState,
+                usuario: action.payload
+            }
+        case "logout":
+            return {
+                ...globalState,
+                usuario: null
+            }
         case "changeStateNewAlumnos":
             return {
                 ...globalState,

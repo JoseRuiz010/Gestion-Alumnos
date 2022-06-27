@@ -1,12 +1,12 @@
 import { BrowserRouter } from "react-router-dom";
-import NavegacionPrincipal from "./Routes/NavegacionPrincipal";
- 
+import { Main } from "./Routes/Main";
+
 
 
 function App() {
   return (
     <BrowserRouter>
-      <NavegacionPrincipal />
+      <Main />
     </BrowserRouter>
   )
 }

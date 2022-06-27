@@ -2,9 +2,7 @@ import React from 'react'
 import { ValidarNota } from './ValidarNota';
 
 export const NotasTabla = ({ evaluaciones, materia, mostrarNombre }) => {
-    console.log('====================================');
-    console.log(evaluaciones);
-    console.log('====================================');
+
     return (
         <>
             {

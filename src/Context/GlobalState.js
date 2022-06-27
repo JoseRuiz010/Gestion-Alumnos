@@ -7,11 +7,23 @@ const initialState = {
     isOpenNavbar: false,
     generarDatos: true,
     alumnos: [],
-    materias: null
+    materias: null,
+    usuario: null
 }
 export const GlobalStateProvider = ({ children }) => {
     const [stateGlobal, dispatch] = useReducer(GlobalReducer, initialState)
 
+    const onLogin = (user) => {
+        dispatch({
+            type: "login",
+            payload: user
+        });
+    }
+    const onLogout = () => {
+        dispatch({
+            type: "logout",
+        });
+    }
 
     const changeStateNewAlumno = () => {
         dispatch({
@@ -43,7 +55,7 @@ export const GlobalStateProvider = ({ children }) => {
     }
     const cargarMaterias = (materias) => {
 
-        
+
 
         dispatch({
             type: "cargarMaterias",
@@ -65,13 +77,16 @@ export const GlobalStateProvider = ({ children }) => {
             generarDatos: stateGlobal.generarDatos,
             alumnos: stateGlobal.alumnos,
             materias: stateGlobal.materias,
+            usuario: stateGlobal.usuario,
             changeStateNewAlumno,
             changeIsOpenNavbar,
             DatosGenerados,
             agregarAlumno,
             agregarMateria,
             cargarMaterias,
-            cargarAlumnos
+            cargarAlumnos,
+            onLogin,
+            onLogout
         }} >
             {children}
         </GlobalContext.Provider>

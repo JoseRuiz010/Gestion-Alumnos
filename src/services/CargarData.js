@@ -1,18 +1,43 @@
-import { cursos, evaluaciones, evaluacionesAlumnos } from "../Data/DatosAlumnos"
+import { cursos, evaluaciones, evaluacionesAlumnos, usuarios } from "../Data/DatosAlumnos"
 import { uid } from 'uid';
+
+
+let curso;
+let usuario;
+
+const actualizarUsuario = () => {
+    usuarios.find(u => u.id === usuario.id).curso = curso
+}
+
+export const ValidarLogin = (user) => {
+    console.log(user);
+    usuario = usuarios.find(u => u.username === user.username & u.password === user.password)
+    console.log('====================================');
+    console.log(usuario);
+    console.log('====================================');
+
+    if (usuario) {
+        curso = usuario.curso
+    }
+
+    return usuario
+}
+
+
+
 export const getAlumnos = () => {
-    return (cursos[0].alumnos)
+    return (curso.alumnos)
 }
 
 
 export const getNotasAlumnosXMateria = (id) => {
     const notasXMateria = [];
-    cursos[0].materias.map(m => {
+    curso.materias.map(m => {
 
         notasXMateria.push(
             {
                 materia: m,
-                alumno: cursos[0].alumnos.filter(a => {
+                alumno: curso.alumnos.filter(a => {
                     if (id === "") {
                         return a;
                     } else {
@@ -35,12 +60,12 @@ export const getNotasAlumnosXMateria = (id) => {
 }
 export const getNotasFilterByMateria = (id) => {
     const notasXMateria = [];
-    cursos[0].materias.filter(m => m.id === id).map(m => {
+    curso?.materias.filter(m => m.id === id).map(m => {
 
         notasXMateria.push(
             {
                 materia: m,
-                alumno: cursos[0].alumnos.map(a => (
+                alumno: curso.alumnos.map(a => (
                     {
                         alumnoNombre: a,
                         evaluaciones: evaluacionesAlumnos.filter(eva => (
@@ -57,12 +82,13 @@ export const getNotasFilterByMateria = (id) => {
 }
 export const getNotasFilterByMateriaYEvaluacion = (id, idEvaluacion) => {
     const notasXMateria = [];
-    cursos[0].materias.filter(m => m.id === id).map(m => {
+    console.log(id, idEvaluacion);
+    curso.materias.filter(m => m.id === id).map(m => {
 
         notasXMateria.push(
             {
                 materia: m,
-                alumno: cursos[0].alumnos.map(a => (
+                alumno: curso.alumnos.map(a => (
                     {
                         alumnoNombre: a,
                         evaluaciones: evaluacionesAlumnos.filter(eva => (
@@ -73,6 +99,7 @@ export const getNotasFilterByMateriaYEvaluacion = (id, idEvaluacion) => {
             }
         )
     })
+    console.log(notasXMateria);
     return (notasXMateria[0].alumno.map(a => a.evaluaciones.filter(eff => eff.evaluacion.id === idEvaluacion)));
     // return notasXMateria;
 }
@@ -83,9 +110,9 @@ export const CargarNotaMateria = (notas, idMateria, idEvaluacion) => {
     let idAlumnos = []
     console.log("H");
     idAlumnos = (Object.keys(notas))
-
+    console.log("idev", idEvaluacion);
     let materia = getMateriasById(idMateria);
-    let evaluacion = getEvaluacionesById(idEvaluacion);
+    let evaluacion = getEvaluacionesByIdByMateria(idEvaluacion, idMateria);
     let alumnos = idAlumnos.map(a => getAlumnosByID(a))
     let notasDeAlu = idAlumnos.map(a => notas[a])
 
@@ -99,9 +126,17 @@ export const CargarNotaMateria = (notas, idMateria, idEvaluacion) => {
                 nota: parseInt(notasDeAlu[i])
             }
         )
+        console.log({
+            id: uid(9),
+            evaluacion: evaluacion,
+            alumno: alumnos[i],
+            materia: materia,
+            nota: parseInt(notasDeAlu[i])
+        });
     })
 
     console.log(notasXMateria);
+    actualizarUsuario();
 }
 
 export const actualizarNotas = (notas, idMateria, idEvaluacion) => {
@@ -119,51 +154,53 @@ export const actualizarNotas = (notas, idMateria, idEvaluacion) => {
         }
         return e
     })
+    actualizarUsuario();
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 export const getAlumnosByID = (id) => {
 
-    return cursos[0].alumnos.find(a => a.id === id)
+    return curso.alumnos.find(a => a.id === id)
 }
 export const agregarAlumnoApi = (alumno) => {
 
-    return cursos[0].alumnos.push(alumno);
+    return curso.alumnos.push(alumno);
 }
 
 export const getProfesores = () => {
-    return (cursos[0].materias.flatMap(({ profesores, nombre, id }) => profesores.flatMap(p => ({ ...p, nombreMateria: nombre, idMateria: id }))))
+    return (curso?.materias?.flatMap(({ profesores, nombre, id }) => profesores.flatMap(p => ({ ...p, nombreMateria: nombre, idMateria: id }))))
 }
 export const getCursos = () => {
     return (cursos)
 }
 export const getMaterias = () => {
-    return (cursos[0].materias)
+    return (curso.materias)
 }
 export const getMateriasById = (id) => {
-    return (cursos[0].materias.find(m => m.id === id));
+    return (curso.materias.find(m => m.id === id));
+}
+export const agregarEvaluacion = (idMateria, newEvaluacion) => {
+    console.log('====================================');
+    console.log(curso.materias.find(m => m.id === idMateria));
+    console.log('====================================');
+    (curso.materias.find(m => m.id === idMateria).evaluaciones.push({ ...newEvaluacion, id: (Date.now() + Math.random()).toString() }))
+    actualizarUsuario();
+
 }
 export const getEvaluaciones = () => {
     return (evaluaciones)
 }
 export const getEvaluacionesById = (id) => {
     return (evaluaciones.find(m => m.id === id))
+}
+export const getEvaluacionesByIdByMateria = (idEv, idMateria) => {
+    const materia = getMateriasById(idMateria);
+    const evaluaciones = materia.evaluaciones
+    console.log(materia);
+    console.log(evaluaciones.find(m => m.id == idEv));
+    return evaluaciones.find(m => m.id == idEv)
+    //return (.evaluaciones.find(m => m.id === idEv))
+    //curso.materias.evaluaciones
 }
 export const getEvaluacionesAlumnos = () => {
     return (evaluacionesAlumnos)

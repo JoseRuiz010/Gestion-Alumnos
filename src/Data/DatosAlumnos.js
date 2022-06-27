@@ -95,24 +95,23 @@ export const materias = [
         nombre: "Matematica 1",
         icono: "https://cdn-icons-png.flaticon.com/512/2941/2941603.png",
         profesores: [profesores[0]],
-        evaluaciones: evaluaciones
+        evaluaciones: [evaluaciones[0], evaluaciones[1], evaluaciones[2]]
     },
     {
         id: "241cc2935",
         nombre: "Lengua",
         icono: "https://ele.chaco.gob.ar/pluginfile.php/920081/course/section/225460/lengua-y-literatura.png",
         profesores: [profesores[1]],
-        evaluaciones: evaluaciones
+        evaluaciones: [evaluaciones[0], evaluaciones[1], evaluaciones[2]]
     },
     {
         id: "41cc29356",
         nombre: "Fisica",
         icono: "https://i.pinimg.com/736x/e5/ea/be/e5eabe46c0467ab80a05bde5988dd35e.jpg",
         profesores: [profesores[2]],
-        evaluaciones: evaluaciones
+        evaluaciones: [evaluaciones[0], evaluaciones[1], evaluaciones[2]]
     }
 ]
-
 export const cursos = [
     {
         id: "uid(9)123",
@@ -127,6 +126,23 @@ export const cursos = [
         materia: []
     }
 ]
+export const usuarios = [
+    {
+        id: "987",
+        username: "user1",
+        password: "1234",
+        curso: cursos[0]
+    },
+    {
+        id: "9871",
+        username: "user2",
+        password: "1234",
+        curso: cursos[1]
+    }
+]
+
+
+
 export const evaluacionesAlumnos = [
     {
         id: "1",

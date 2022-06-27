@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { NavLink } from "react-router-dom"
+import { GlobalContext } from '../Context/GlobalContext';
 const Navbar = () => {
     // const { isOpenNavbar, changeIsOpenNavbar } = useContext(GlobalContext)
+    const { onLogout } = useContext(GlobalContext);
     return (
         <>
 
@@ -19,6 +21,7 @@ const Navbar = () => {
                             <li><NavLink to={"/alumnos"}>Alumnos</NavLink></li>
                             <li><NavLink to={"/materias"}>Materias</NavLink></li>
                             <li><NavLink to={"/profesores"}>Profesores</NavLink></li>
+                            <li onClick={() => onLogout()}><NavLink className="text-red-500" to={"/login"}>Logout</NavLink></li>
 
                         </ul>
                     </div>
@@ -33,6 +36,7 @@ const Navbar = () => {
                         <li><NavLink to={"/alumnos"}>Alumnos</NavLink></li>
                         <li><NavLink to={"/materias"}>Materias</NavLink></li>
                         <li><NavLink to={"/profesores"}>Profesores</NavLink></li>
+                        <li onClick={() => onLogout()}><NavLink className="text-red-500" to={"/login"}>Logout</NavLink></li>
                     </ul>
                 </div>
                 <div className="navbar-end">

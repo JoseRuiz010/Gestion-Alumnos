@@ -153,7 +153,7 @@ const BuscarEvaluacion = ({ idMateria, idEvaluacion }) => {
 
 
 
-const InputGroupNota = ({ input, nombre, meta }) => (
+export const InputGroupNota = ({ input, nombre, meta }) => (
     <div className='form-control ml-2 mb-3 mx-auto '>
         <label className="input-group justify-center mx-auto">
             <span className='w-32  sm:w-1/4'>{nombre}</span>
