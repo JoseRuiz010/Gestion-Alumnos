@@ -14,10 +14,16 @@ export const GlobalStateProvider = ({ children }) => {
     const [stateGlobal, dispatch] = useReducer(GlobalReducer, initialState)
 
     const onLogin = (user) => {
+
+        const { alumnos, materias } = user.curso[0]
+
+        console.log(alumnos, materias);
         dispatch({
             type: "login",
             payload: user
         });
+        cargarAlumnos(alumnos);
+        cargarMaterias(materias)
     }
     const onLogout = () => {
         dispatch({
@@ -54,9 +60,6 @@ export const GlobalStateProvider = ({ children }) => {
         })
     }
     const cargarMaterias = (materias) => {
-
-
-
         dispatch({
             type: "cargarMaterias",
             payload: materias

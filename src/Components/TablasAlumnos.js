@@ -6,19 +6,8 @@ import { MensajeError } from './formularioAlumno/MensajeError';
 export const TablaAlumnos = ({ obtenerAlumnos }) => {
 
     const { alumnos, cargarAlumnos } = useContext(GlobalContext)
-    const [loading, setLoading] = useState(false)
+
     const navegacion = useNavigate();
-
-    useEffect(() => {
-        setLoading(true)
-        setTimeout(() => {
-            cargarAlumnos(obtenerAlumnos)
-            setLoading(false)
-        }, 3000);
-    }, [alumnos])
-
-    if (loading) return (<progress class="progress  mt-10"></progress>)
-
     return (
         <div className="overflow-x-auto ">
 
@@ -38,7 +27,7 @@ export const TablaAlumnos = ({ obtenerAlumnos }) => {
                         {
                             alumnos.map((a, i) => (
 
-                                <tr key={a.id + i} onClick={() => navegacion(`/alumnos/${a.id}`)} className='hover hover:cursor-pointer'>
+                                <tr key={a._id + i} onClick={() => navegacion(`/alumnos/${a._id}`)} className='hover hover:cursor-pointer'>
                                     <th>#{i + 1}</th>
                                     <td>{a.nombre}</td>
                                     <td>{a.apellido}</td>

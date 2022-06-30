@@ -1,30 +1,39 @@
+import axios from 'axios';
 import React, { useState } from 'react'
 import { useContext } from 'react';
 import { Field, Form } from 'react-final-form';
 import { MensajeError } from '../Components/formularioAlumno/MensajeError';
 import { GlobalContext } from '../Context/GlobalContext';
-import { ValidarLogin } from '../services/CargarData';
+
 
 
 const ScreenLogin = () => {
+
     const [loading, setloading] = useState(false)
     const [error, setError] = useState("")
     const { onLogin } = useContext(GlobalContext);
-    const onSubmit = (value) => {
+    const onSubmit = async (value) => {
+
         setloading(true)
-        //console.log(value);
-        setTimeout(() => {
-            console.log("SUBMIT");
-            const usuarioLogueado = ValidarLogin(value)
-            if (!usuarioLogueado) {
-                setError("Las credenciales ingresadas son invalidas")
-            } else {
-                setError("");
-                onLogin(usuarioLogueado)
-            }
-            setloading(false)
-        }, 1000);
+        await axios.get(`http://localhost:3000/user?username=user1&password=1234`)
+            .then((res) => {
+
+                if (!res) {
+                    setError("Las credenciales ingresadas son invalidas")
+                } else {
+                    setError("");
+                    onLogin(res.data)
+                }
+            }).then((res) => {
+
+            })
+            .catch(err => console.log(err))
+
+        setloading(false)
+
+
     }
+
     return (
         <div className='flex flex-col   sm:p-10 mt-28  w-11/12 mx-auto shadow-2xl max-w-xl     '>
             <div className='  h-44 w-44 flex m-auto justify-center align-middle rounded-full mb-4'>

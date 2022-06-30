@@ -8,6 +8,7 @@ export const CardDatosPErsonales = ({ nombre,
     legajo,
     direccion, nombreMateria, idMateria }) => {
     const [avatar, setavatar] = useState()
+
     useEffect(() => {
         fetch("https://randomuser.me/api/")
             .then(res => res.json())
@@ -16,8 +17,12 @@ export const CardDatosPErsonales = ({ nombre,
     }, [])
     return (
         <div className="card w-80  bg-base-100 shadow-xl">
-            <figure className="px-10 pt-10">
-                <img src={avatar} alt="Shoes" className="rounded-xl" />
+            <figure className="bg-transparent mt-12 w-36 h-36   mx-auto ">
+                {
+                    !avatar ? <div>Cargando...</div> :
+
+                        <img src={avatar} alt="Shoes" className="w-full rounded-xl" />
+                }
             </figure>
             <div className="card-body items-center text-center">
                 <h2 className="card-title mb-5">{nombre + " " + apellido}</h2>

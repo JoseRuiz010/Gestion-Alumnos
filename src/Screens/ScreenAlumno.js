@@ -1,16 +1,19 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useParams, Link } from "react-router-dom";
+import { GlobalContext } from '../Context/GlobalContext';
 import { getAlumnosByID } from '../services/CargarData';
 
 export const ScreenAlumno = () => {
     const { id } = useParams();
     const [alumno, setalumno] = useState();
     const [avatar, setavatar] = useState()
+    const { alumnos } = useContext(GlobalContext)
+
     useEffect(() => {
         fetch("https://randomuser.me/api/")
             .then(res => res.json())
             .then(data => setavatar(data.results[0].picture.large))
-        id && setalumno(getAlumnosByID(id))
+        id && setalumno(alumnos.find(a => a._id === id))
     }, [id])
 
     if (!alumno) return (<div>Cargando...</div>)

@@ -14,7 +14,7 @@ export const ScreenAlumnos = () => {
             <h1 className='font-bold text-2xl text-center'>Lista Alumnos</h1>
 
             <div className='p-3 '>
-                <TablaAlumnos obtenerAlumnos={getAlumnos()} />
+                <TablaAlumnos />
             </div>
         </div>
     )

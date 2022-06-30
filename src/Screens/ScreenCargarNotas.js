@@ -2,20 +2,19 @@ import React, { useEffect, useState } from 'react'
 import { Field, Form } from 'react-final-form';
 import { useNavigate, useParams } from 'react-router-dom';
 import { MensajeError } from '../Components/formularioAlumno/MensajeError';
+import { useFetch } from '../Hooks/useFetch';
 import { actualizarNotas, CargarNotaMateria, getAlumnos, getMateriasById, getNotasFilterByMateria, getNotasFilterByMateriaYEvaluacion } from '../services/CargarData';
 import { validarNota } from '../Validaciones/ValidacionesNotas';
 
 export const ScreenCargarNotas = () => {
     const { id } = useParams();
-    const [state, setmateria] = useState();
+    const { data, error, loading } = useFetch(`/materia?_id=${id}`)
 
-    useEffect(() => {
-        setmateria(getMateriasById(id))
-    }, [id])
-    if (!state) return (<div>Cargando...</div>)
-    const { nombre, profesores,
+    if (!data) return (<div>Cargando...</div>)
+
+    const { nombre, profesor,
         evaluaciones
-    } = state
+    } = data
 
     return (
         <div className=''>
@@ -24,11 +23,11 @@ export const ScreenCargarNotas = () => {
                     <h1> <span className='font-bold'>Materia:</span> {nombre}</h1>
                 </div>
                 <div className='mx-auto '>
-                    <h1><span className='font-bold'>Profesor: </span>{profesores[0].nombre + " " + profesores[0].apellido}</h1>
+                    <h1><span className='font-bold'>Profesor: </span>{profesor.nombre + " " + profesor.apellido}</h1>
                 </div>
             </div>
             <div className=' md:w-10/12 mx-auto'>
-                <Select evaluaciones={evaluaciones} idMateria={state.id} />
+                <Select evaluaciones={evaluaciones} idMateria={id} />
             </div>
         </div>
     )
