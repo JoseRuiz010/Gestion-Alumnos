@@ -62,8 +62,8 @@ export const profesores = [
         nombre: "Marcelo",
         apellido: "Garcia",
         telefono: "381463721",
-        email: "marcelo@gmail.com ",
-        legajo: "1223456 ",
+        email: "marcelo@gmail.com",
+        legajo: "1223488 ",
         direccion: "Tucuman, Leales"
     },
 ]

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Field, Form } from 'react-final-form';
 import { useNavigate, useParams } from "react-router-dom";
+import { InputGroup } from '../Components/formularioAlumno/InpurGroup';
 import { MensajeError } from '../Components/formularioAlumno/MensajeError';
 import { HeaderDatosPersonales } from '../Components/HeaderDatosPersonales';
 import { TablaNotaAlumnos } from '../Components/Tabla Nota Alumnos/TablaNotaAlumnos';
@@ -30,9 +31,6 @@ const AlumnosPorMateria = () => {
     const { profesores } = materia
 
     const onSubmit = (value) => {
-        console.log('====================================');
-        console.log(value);
-        console.log('====================================');
         agregarEvaluacion(id, value)
         setisVisibleFormEV(!isVisibleFormEV)
     }
@@ -44,7 +42,7 @@ const AlumnosPorMateria = () => {
                 <button className="btn btn-outline btn-info m-3" onClick={() => navigate(`/materias/cargarNotas/${id}`)}>Cargar Notas</button>
                 <button className="btn btn-outline btn-info m-3 " onClick={() => setisVisibleFormEV(!isVisibleFormEV)}>Agregar Evaluacion</button>
             </div>
-            {isVisibleFormEV && (<div class="card w-96 bg-base-100 shadow-xl mx-auto">
+            {isVisibleFormEV && (<div class="w-full md:w-10/12 mb-2 bg-base-100 shadow-sm mx-auto">
                 <div class="card-body">
                     <h6 className='font-bold text-lg text-center'>Nueva Evaluacion</h6>
                     <Form
@@ -57,14 +55,14 @@ const AlumnosPorMateria = () => {
                         }}
                         onSubmit={onSubmit}
                         render={({ handleSubmit }) => (
-                            <form className='card-body' onSubmit={handleSubmit}>
+                            <form className=' md:w-10/12 mx-auto' onSubmit={handleSubmit}>
                                 <Field name={"descripcion"}>
                                     {(props) => (
-                                        <InputGroupNota input={props.input} meta={props.meta} nombre={"Descripcion Evaluacion"} />
+                                        <InputGroup input={props.input} meta={props.meta} textLabel={"Descripcion"} />
                                     )}
                                 </Field>
                                 <div class="form-control mt-6">
-                                    <button type='submit' className='btn btn-primary'> Crear </button>
+                                    <button type='submit' className='btn btn-success'> Crear </button>
                                 </div>
 
                             </form>)}

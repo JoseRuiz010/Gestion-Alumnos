@@ -11,11 +11,11 @@ const FormularioNuevoAlumno = () => {
     const onSubmit = (values) => {
         agregarAlumno({ id: uid(9), ...values });
         changeStateNewAlumno();
-    }   
+    }
 
     return (
-        <div className='shadow-2xl w-11/12 mx-auto p-2 max-w-xl rounded-sm'>
-            <h1 className='text-center font-bold text-lg m-5 text-blue-500'>Nuevo Alumno</h1>
+        <div className='shadow-sm w-11/12 mx-auto p-2 max-w-xl rounded-sm mb-4'>
+            <h1 className='font-bold text-lg text-center mb-4'>Nuevo Alumno</h1>
             <Form
                 onSubmit={onSubmit}
                 validate={validacion}
@@ -53,7 +53,7 @@ const FormularioNuevoAlumno = () => {
                         </Field>
 
                         <div className="buttons flex justify-around align-middle mx-auto w-10/12">
-                            <button className="btn btn-info" type="submit" disabled={submitting} >Crear</button>
+                            <button className="btn btn-success" type="submit" disabled={submitting} >Crear</button>
                             <button className="btn btn-warning"
                                 type="button"
                                 onClick={form.reset}

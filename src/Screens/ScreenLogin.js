@@ -23,11 +23,15 @@ const ScreenLogin = () => {
                 onLogin(usuarioLogueado)
             }
             setloading(false)
-        }, 3000);
+        }, 1000);
     }
     return (
-        <div className='flex flex-col justify-center sm:p-10 mt-16  w-full mx-auto shadow-xl max-w-xl'>
-            <h6 className='text-center text-2xl mb-4'>Iniciar Sesion</h6>
+        <div className='flex flex-col   sm:p-10 mt-28  w-11/12 mx-auto shadow-2xl max-w-xl     '>
+            <div className='  h-44 w-44 flex m-auto justify-center align-middle rounded-full mb-4'>
+                <img className='h-40 w-40 cursor-pointer my-auto' src='https://cdn-icons-png.flaticon.com/512/855/855601.png' alt='Logo' />
+            </div>
+
+            <h6 className='text-center text-2xl font-bold'>Iniciar Sesion</h6>
             {error && <MensajeError mensaje={error} />}
             <Form
                 validate={values => {
