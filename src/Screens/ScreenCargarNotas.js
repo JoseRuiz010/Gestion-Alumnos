@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Field, Form } from 'react-final-form';
 import { useNavigate, useParams } from 'react-router-dom';
 import { MensajeError } from '../Components/formularioAlumno/MensajeError';
+import { GlobalContext } from '../Context/GlobalContext';
 import { useFetch } from '../Hooks/useFetch';
 import { actualizarNotas, CargarNotaMateria, getAlumnos, getMateriasById, getNotasFilterByMateria, getNotasFilterByMateriaYEvaluacion } from '../services/CargarData';
 import { validarNota } from '../Validaciones/ValidacionesNotas';
@@ -55,7 +56,7 @@ const Select = ({ evaluaciones, idMateria }) => {
                                         <option value={0} >Seleccionar...</option>
                                         {
                                             evaluaciones.map(e => (
-                                                <option onClick={() => setidEvaluacion(0)} key={e + Date.now() + Math.random()} value={e.id}>{e.descripcion}</option>
+                                                <option onClick={() => setidEvaluacion(0)} key={e + Date.now() + Math.random()} value={e._id}>{e.descripcion}</option>
                                             ))
                                         }
                                     </select>
@@ -76,8 +77,10 @@ const Select = ({ evaluaciones, idMateria }) => {
 
 const BuscarEvaluacion = ({ idMateria, idEvaluacion }) => {
     const [evaluaciones, setevaluaciones] = useState();
-    const [alumnos, setAlumnos] = useState();
-    const [data, setdata] = useState();
+
+    const { alumnos } = useContext(GlobalContext)
+
+    const { data, error, loading } = useFetch(`/evaluacionAlumno?materia=${idMateria}&evaluacion=${idEvaluacion}`)
     const navigate = useNavigate()
     const onSubmit = (values) => {
         CargarNotaMateria(values, idMateria, idEvaluacion);
@@ -88,14 +91,9 @@ const BuscarEvaluacion = ({ idMateria, idEvaluacion }) => {
         navigate(`/materias/${idMateria}`)
     }
 
-    useEffect(() => {
-        setevaluaciones(getNotasFilterByMateriaYEvaluacion(idMateria, idEvaluacion).flat(1));
-        setAlumnos(getAlumnos());
-    }, [idMateria, idEvaluacion])
+    if (!data) return (<div>Cargando...</div>)
 
-    if (!evaluaciones) return (<div>Cargando...</div>)
-
-    if (evaluaciones.length < 1)
+    if (data.length < 1)
         return (
             <div className='my-6 w-full mx-auto '>
                 {
@@ -106,7 +104,7 @@ const BuscarEvaluacion = ({ idMateria, idEvaluacion }) => {
                             <form className='mx-auto' onSubmit={handleSubmit}>
                                 {
                                     alumnos.map(a => (
-                                        <Field name={a.id} validate={validarNota}>
+                                        <Field name={a._id} validate={validarNota}>
                                             {({ input, meta }) => (
                                                 <InputGroupNota input={input} meta={meta} nombre={a.nombre} />
                                             )}
@@ -130,10 +128,10 @@ const BuscarEvaluacion = ({ idMateria, idEvaluacion }) => {
                     render={({ handleSubmit }) => (
                         <form className='mx-auto' onSubmit={handleSubmit}>
                             {
-                                evaluaciones.map(a => (
-                                    <Field name={a.alumno.id} validate={validarNota} initialValue={a.nota}>
+                                data[0].alumnos.map(a => (
+                                    <Field name={a.alumnoNombre.nombre} validate={validarNota} initialValue={a.evaluaciones[0].nota}>
                                         {(props) => (
-                                            <InputGroupNota input={props.input} meta={props.meta} nombre={a.alumno.nombre} />
+                                            <InputGroupNota input={props.input} meta={props.meta} nombre={a.alumnoNombre.nombre} />
                                         )}
                                     </Field>
                                 ))
@@ -156,7 +154,7 @@ export const InputGroupNota = ({ input, nombre, meta }) => (
     <div className='form-control ml-2 mb-3 mx-auto '>
         <label className="input-group justify-center mx-auto">
             <span className='w-32  sm:w-1/4'>{nombre}</span>
-            <input type="text" initialValue={"10"} {...input} placeholder="Nota" className="input input-bordered " />
+            <input type="text" {...input} placeholder="Nota" className="input input-bordered " />
         </label>
         {meta.error && meta.touched && <MensajeError mensaje={meta.error} />}
     </div>

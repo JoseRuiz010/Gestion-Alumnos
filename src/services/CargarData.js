@@ -58,27 +58,44 @@ export const getNotasAlumnosXMateria = (id) => {
     })
     return notasXMateria;
 }
-export const getNotasFilterByMateria = (id) => {
+export const getNotasFilterByMateria = (id, materias = [], alumnos = [], data = []) => {
     const notasXMateria = [];
-    curso?.materias.filter(m => m.id === id).map(m => {
+    if (data.length > 1) {
 
-        notasXMateria.push(
-            {
-                materia: m,
-                alumno: curso.alumnos.map(a => (
-                    {
-                        alumnoNombre: a,
-                        evaluaciones: evaluacionesAlumnos.filter(eva => (
-                            eva.alumno.id === a.id && eva.materia.id === m.id
-                        ))
-                    }
-                ))
-            }
-        )
+        console.log(data.filter(d => d.materia._id === id))
+        console.log(data.filter(eva => eva === eva));
+
+        console.log([{
+            materia: materias.find(m => m._id = id),
+            alumnos: alumnos.map(a => (
+                {
+                    alumnoNombre: a,
+                    // evaluaciones: data.filter(eva => eva.alumno._id == a._id)
+                }
+            ))
+        }])
+
+    }
 
 
-    })
-    return notasXMateria;
+    //     .map(m => {
+
+    //         notasXMateria.push(
+    //             {
+    //                 materia: m,
+    //                 alumno: alumnos.map(a => (
+    //                     {
+    //                         alumnoNombre: a,
+    //                         // evaluaciones: data.filter(eva => (
+    //                         //     eva.alumno._id === a._id && eva.materia._id === m._id
+    //                         // ))
+    //                     }
+    //                 ))
+    //             }
+    //         )
+    //     })
+    // console.log(notasXMateria);
+    // return notasXMateria;
 }
 export const getNotasFilterByMateriaYEvaluacion = (id, idEvaluacion) => {
     const notasXMateria = [];

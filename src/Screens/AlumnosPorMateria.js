@@ -8,25 +8,15 @@ import { TablaNotaAlumnos } from '../Components/Tabla Nota Alumnos/TablaNotaAlum
 import { useFetch } from '../Hooks/useFetch';
 
 import { agregarEvaluacion, getMateriasById, getNotasFilterByMateria } from '../services/CargarData'
-const InputGroupNota = ({ input, nombre, meta }) => (
-    <div className='form-control'>
-        <label className="label">
-            <span className="label-text">{nombre}</span>
-        </label>
-        <input type="text" {...input} placeholder={nombre} className="input input-bordered" />
-
-        {meta.error && meta.touched && <MensajeError mensaje={meta.error} />}
-    </div>
-
-)
+ 
 
 const AlumnosPorMateria = () => {
     const { id } = useParams();
     const navigate = useNavigate()
-    const [materia, setmateria] = useState()
+   
     const [isVisibleFormEV, setisVisibleFormEV] = useState(false)
     const { data, error, loading } = useFetch(`/materia?_id=${id}`)
-   
+
     if (!data) return (<div>Cargando...</div>)
     const { profesor } = data
 
